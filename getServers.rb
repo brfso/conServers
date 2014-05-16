@@ -6,7 +6,10 @@ require 'csv'
 
 username = "#{ARGV[0]}"
 password = "#{ARGV[1]}"
-uri = URI("http://wiki.sec4you.com.br/display/SEC4YOU/%28SEC4YOU%29+Servidores")
+
+# SAMPLE: uri = URI("http://www.youwebsite.com/servers.html")
+
+uri = URI("http://")
 req = Net::HTTP::Get.new(uri.request_uri)
 req.basic_auth username, password
 

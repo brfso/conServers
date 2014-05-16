@@ -19,13 +19,15 @@ This is script list all server from html page with table (<td>) and automatc coo
 ##How to Use##
 
 	1. Set SSH Key in SSH_KEY in coserver.sh
-	2. Execute conServers.sh
+	2. Change Page to connect (url) in getServers.rb
+	3. Execute conServers.sh
 		conservers.sh
 ####To Update Server List	
 	To update server list from html page, execute with option -a:
 	conserver.sh -a
 
-
 ##toDO##
 1. Support connections to windows server (rdesktop, etc)
 2. Support to automatic HTML Page update from servers
+3. Add Auth HTTP as Option
+4. Change parameters to config file
