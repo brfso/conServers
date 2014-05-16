@@ -15,6 +15,7 @@ This is script list all server from html page with table (<td>) and automatc coo
 	wget https://github.com/brfso/conServers/archive/master.zip
 	unzip conServers-master.zip
 	sudo ln -s $PWD/conServers-master/conservers.sh /usr/bin/
+	sudo ln -s $PWD/conServers-master/getServers.rb /usr/bin/
 	
 ##How to Use##
 

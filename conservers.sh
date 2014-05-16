@@ -23,7 +23,7 @@ if [ ! -f "$SERVERS_LIST" ] || [ "${1}" == '-a' ];
 		do
 		read -s -p "Digite a senha do seu usuário da WIKI: " PASSWORD
 		done
-		ruby getServers.rb ${USERNAME} ${PASSWORD}
+		ruby /usr/bin/getServers.rb ${USERNAME} ${PASSWORD}
 		return_code
 	fi
 
