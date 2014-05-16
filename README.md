@@ -31,3 +31,4 @@ This is script list all server from html page with table (<td>) and automatc coo
 2. Support to automatic HTML Page update from servers
 3. Add Auth HTTP as Option
 4. Change parameters to config file
+5. Add Automatic detect changes in HTML PAGE and update CSV file
