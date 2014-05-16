@@ -13,8 +13,8 @@ This is script list all server from html page with table (<td>) and automatc coo
 ##How to Install##
 	cd ~/
 	wget https://github.com/brfso/conServers/archive/master.zip
-	unzip master.zip
-	sudo ln -s $PWD/conservers.sh /usr/bin/
+	unzip conServers-master.zip
+	sudo ln -s $PWD/conServers-master/conservers.sh /usr/bin/
 	
 ##How to Use##
 
