@@ -7,9 +7,7 @@ require 'csv'
 username = "#{ARGV[0]}"
 password = "#{ARGV[1]}"
 
-# SAMPLE: uri = URI("http://www.youwebsite.com/servers.html")
-
-uri = URI("http://")
+uri = URI("#{ARGV[2]}")
 req = Net::HTTP::Get.new(uri.request_uri)
 req.basic_auth username, password
 

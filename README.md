@@ -22,17 +22,15 @@ Notes: Mac Users can install wget using this is how to: http://osxdaily.com/2012
 	
 ##How to Use##
 
-	1. Set SSH Key in SSH_KEY in coserver.sh
-	2. Change Page to connect (url) in getServers.rb
+	1. Set SSH Key in SSH_KEY in /etc/conservers.config
+	2. Change Page to connect (url) in /etc/conservers.config
 	3. Execute conServers.sh
 		conservers.sh
+		
 ####To Update Server List	
 	To update server list from html page, execute with option -a:
 	conserver.sh -a
 
 ##toDO##
-1. Support connections to windows server (rdesktop, etc)
-2. Support to automatic HTML Page update from servers
-3. Add Auth HTTP as Option
-4. Change parameters to config file
-5. Add Automatic detect changes in HTML PAGE and update CSV file
+To view or make one request use: https://github.com/brfso/conServers/issues
+

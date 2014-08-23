@@ -1,7 +1,6 @@
 #!/bin/bash 
-# SSH_KEY="$HOME/.ssh/<KEY>" | SAMPLE: SSH_KEY="$HOME/.ssh/id_rsa"
-SSH_KEY="$HOME/.ssh/id_rsa"
-SERVERS_LIST="/tmp/servers.csv"
+
+. /etc/conservers.config
  
 function return_code() {
 	if [ $? -eq 1 ]; then		
@@ -23,7 +22,7 @@ if [ ! -f "$SERVERS_LIST" ] || [ "${1}" == '-a' ];
 		do
 		read -s -p "Digite a senha do seu usuário da WIKI: " PASSWORD
 		done
-		ruby /usr/bin/getServers.rb ${USERNAME} ${PASSWORD}
+		ruby /usr/bin/getServers.rb ${USERNAME} ${PASSWORD} ${URL}
 		return_code
 	fi
 
