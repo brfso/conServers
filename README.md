@@ -7,6 +7,7 @@ This is script list all server from html page with table (<td>) and automatc coo
 ##Requirements##
 
 1. Linux or MacOSX
+2. Ruby with bundle (gem install bundle)
 2. SSH RSA Key to connect on Server
 3. HTML Page with table (Company | Hostname or ip Address| user| port | alias )
 	
@@ -14,8 +15,10 @@ This is script list all server from html page with table (<td>) and automatc coo
 	cd ~/
 	wget https://github.com/brfso/conServers/archive/master.zip
 	unzip conServers-master.zip
-	sudo ln -s $PWD/conServers-master/conservers.sh /usr/bin/
-	sudo ln -s $PWD/conServers-master/getServers.rb /usr/bin/
+	cd $PWD/conServers-master/
+	./install.sh
+
+Notes: Mac Users can install wget using this is how to: http://osxdaily.com/2012/05/22/install-wget-mac-os-x/
 	
 ##How to Use##
 
