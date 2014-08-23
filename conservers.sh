@@ -36,16 +36,16 @@ select selectedEmploye in $EMPRESAS; do
 		echo "Opção Inválida, Digite a opção correta ou Crtl + C para sair: " 
 	else
 		clear
-		HOST=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep $selectedEmploye | awk -F";" '{print $5}' | uniq)
+		HOST=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedEmploye | awk -F";" '{print $5}' | uniq)
 		echo "Selecione o servidor no qual você deseja se conectar: "
 	select selectedHost in $HOST; do
 
 		if [ -z ${selectedHost} ];then
 			echo "Opção Inválida, Digite a opção correta ou Crtl + C para sair: " 
 		else
-			PORTA=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep $selectedHost | awk -F";" '{print $4}')
-			USUARIO=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep $selectedHost | awk -F";" '{print $3}')
-			SERVER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep $selectedHost | awk -F";" '{print $2}')
+			PORTA=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedHost | awk -F";" '{print $4}')
+			USUARIO=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedHost | awk -F";" '{print $3}')
+			SERVER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedHost | awk -F";" '{print $2}')
 			ssh -i $SSH_KEY -p"$PORTA" "$USUARIO"@"$SERVER"
 		fi
 	  done
