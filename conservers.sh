@@ -27,7 +27,7 @@ if [ ! -f "$SERVERS_LIST" ] || [ "${1}" == '-a' ];
 		return_code
 	fi
 
-EMPRESAS=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | awk -F";" '{print $1}' | uniq)
+EMPRESAS=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | awk -F";" '{print $1}' | sort -d | uniq)
 
 clear
 select selectedEmploye in $EMPRESAS; do
@@ -36,7 +36,7 @@ select selectedEmploye in $EMPRESAS; do
 		echo "Opção Inválida, Digite a opção correta ou Crtl + C para sair: " 
 	else
 		clear
-		HOST=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedEmploye | awk -F";" '{print $5}' | uniq)
+		HOST=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedEmploye | awk -F";" '{print $5}' | sort -d | uniq)
 		echo "Selecione o servidor no qual você deseja se conectar: "
 	select selectedHost in $HOST; do
 
