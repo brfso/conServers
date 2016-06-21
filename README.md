@@ -19,7 +19,9 @@ This is script list all server from html page with table (<td>) and automatc coo
 	./install.sh
 
 Notes: Mac Users can install wget using this is how to: http://osxdaily.com/2012/05/22/install-wget-mac-os-x/
-	
+
+OBS: If you have some problem installing nokogiri, please execute the following command:
+      sudo apt-get install libgmp-dev	
 ##How to Use##
 
 	1. Set SSH Key in SSH_KEY in /etc/conservers.config
