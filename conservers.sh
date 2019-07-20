@@ -8,11 +8,12 @@ function return_code() {
     exit 1
   fi   
 }
+
 if [ ! -f "$SERVERS_LIST" ] || [ "${1}" == '-a' ];
   then
     #while [ -z ${USERNAME} ];
     #do
-    ENTRY=$(zenity --title "Wiki Authentication" --username --password)
+    ENTRY=$(zenity --title "Authentication" --username --password)
     #read -p "Digite o seu usuário da WIKI: " USERNAME
     #done
     USERNAME=$(echo $ENTRY | cut -d'|' -f1)

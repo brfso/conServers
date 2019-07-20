@@ -15,7 +15,9 @@ fi
 bundle install
 
 sudo cp $PWD/conservers.sh /usr/local/bin/
+sudo chmod +x /usr/local/bin/conservers.sh
 sudo cp $PWD/conservers.config /etc/
 sudo cp $PWD/getServers.rb /usr/local/bin/
+sudo chmod +x /usr/local/bin/getServers.rb
 
 
