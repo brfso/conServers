@@ -35,15 +35,16 @@ Every time you run conserver inside xquarz terminal
 	
 ## How to Use
 
-	1. Set SSH Key in SSH_KEY in /etc/conservers.config
-	2. Change Page to connect (url) in /etc/conservers.config
-	3. Execute conServers.sh
-		conservers.sh
+1. Set SSH Key in SSH_KEY in /etc/conservers.config
+2. Change Page to connect (url) in /etc/conservers.config
+3. Execute conServers.sh
+
+`$ conservers.sh`
 		
 #### To Update Server List	
 	To update server list from html page, execute with option -a:
 	conserver.sh -a
 
 ## toDO
-To view or make one request use: https://github.com/brfso/conServers/issues
+To view or report bug, request new features, use: https://github.com/brfso/conServers/issues
 
