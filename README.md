@@ -66,6 +66,11 @@ Options:
  -h,   --help          Displays usage info
 ```
 
+For troubleshoot use:
+```
+$ bash -x conserver.sh [option]
+```
+
 ## toDO
 To view or report bug, request new features, use: https://github.com/brfso/conServers/issues
 
