@@ -9,6 +9,8 @@ UPDATE="false"
 GUI_MODE="false"
 USERNAME=""
 PASSWORD=""
+_HOST=""
+SERVERS_LIST="/tmp/servers.csv"
 
 USAGE=$(cat <<END
 Usage:  $0 [OPTIONS]
@@ -48,6 +50,14 @@ function return_code() {
     echo -e "\033[31;1m[Fail]\n\033[0m \n"
     exit 1
   fi   
+}
+
+function hostConnect() {
+  local _HOST=${1} 
+  SERVER_PORT=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep ${_HOST} | awk -F";" '{print $4}')
+  SERVER_USER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep ${_HOST} | awk -F";" '{print $3}')
+  SERVER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep ${_HOST} | awk -F";" '{print $2}')
+  ssh -i $SSH_KEY -p"$SERVER_PORT" "$SERVER_USER"@"$SERVER"
 }
 
 if [ ! -f "$SERVERS_LIST" ] || [ "${UPDATE}" == 'true' ];
@@ -97,10 +107,7 @@ if [ ${GUI_MODE} == "false" ];
           if [ -z ${selectedHost} ];then
             echo "Opção Inválida, Digite a opção correta ou Crtl + C para sair: " 
           else
-            SERVER_PORT=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep $selectedHost | awk -F";" '{print $4}')
-            SERVER_USER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep $selectedHost | awk -F";" '{print $3}')
-            SERVER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep $selectedHost | awk -F";" '{print $2}')
-            ssh -i $SSH_KEY -p"$SERVER_PORT" "$SERVER_USER"@"$SERVER"
+            hostConnect ${selectedHost} 
           fi
         done
     fi
