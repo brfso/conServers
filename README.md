@@ -23,15 +23,19 @@ For Mac users, follow the steps bellow:
 ```
 brew install xquartz
 brew install zenity
+brew install wget
 ```
 Every time you run conserver inside xquarz terminal
 
-*Notes:* Mac Users can install wget using this is how to: http://osxdaily.com/2012/05/22/install-wget-mac-os-x/
+**Notes:** Mac Users can install wget using this is how to: http://osxdaily.com/2012/05/22/install-wget-mac-os-x/
 
 ### Linux Users
 
-*Notes:* If you have some problem installing nokogiri, please execute the following command:
-      `sudo apt-get install libgmp-dev`
+**Notes:** If you have some problem installing nokogiri, please execute the following command:
+
+```
+sudo apt-get install libgmp-dev
+```
 	
 ## How to Use
 
@@ -41,9 +45,26 @@ Every time you run conserver inside xquarz terminal
 
 `$ conservers.sh`
 		
-#### To Update Server List	
-	To update server list from html page, execute with option -a:
-	conserver.sh -a
+### To Update Server List	
+To update server list from html page, execute with option `-u` or `--update`
+
+```bash
+$ conserver.sh --update
+```
+
+### Help and Troubleshoot
+For help, usage: 
+```
+$ conserver.sh -h
+Usage:  conserver [OPTIONS]
+
+conServer
+
+Options:
+ -u,   --update        Update Server List
+ -gui, --gui-mode      Use GUI Mode
+ -h,   --help          Displays usage info
+```
 
 ## toDO
 To view or report bug, request new features, use: https://github.com/brfso/conServers/issues
