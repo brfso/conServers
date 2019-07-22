@@ -62,7 +62,7 @@ conServer
 
 Options:
  -u,   --update        Update Server List
- -gui, --gui-mode      Use GUI Mode
+ -gm, --gui-mode      Use GUI Mode
  -h,   --help          Displays usage info
 ```
 
