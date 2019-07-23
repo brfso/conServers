@@ -34,7 +34,10 @@ Every time you run conserver inside xquarz terminal
 **Notes:** If you have some problem installing nokogiri, please execute the following command:
 
 ```
-sudo apt-get install libgmp-dev
+sudo apt-get install libgmp-dev 
+sudo apt-get install ruby zenity ruby-dev
+sudo apt-get install zlib1g-dev
+sudo apt-get install bundler
 ```
 	
 ## How to Use
