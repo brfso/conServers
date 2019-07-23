@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 . /etc/conservers.config
 
 set -o errexit
@@ -10,7 +10,6 @@ GUI_MODE="false"
 USERNAME=""
 PASSWORD=""
 _HOST=""
-SERVERS_LIST="/tmp/servers.csv"
 
 USAGE=$(cat <<END
 Usage:  $0 [OPTIONS]
@@ -27,7 +26,7 @@ END
 while [[ $# -gt 0 ]]
 do
   case $1 in
-    -gm|--gui-mode)
+    -gui|--gui-mode)
       GUI_MODE="true"
       shift
     ;;
@@ -113,30 +112,32 @@ if [ ${GUI_MODE} == "false" ];
     fi
   done
 else
-   selectedCompany=$(zenity --list --title="Ambientes" --width=400 --height=600 --column="Seleção" $COMPANIES)
+   selectedCompany=$(zenity --list --title="conServers" --width=400 --height=600 --column="Select" $COMPANIES)
     if [ -z ${selectedCompany} ];
       then
-        echo "Opção Inválida, Digite a opção correta ou Crtl + C para sair: "
+        zenity --info --text="Selected Company is null"
     else
       clear
-      HOST=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedCompany | awk -F";" '{print $5}' | sort -d | uniq)
+      FILTER=$(echo $selectedCompany | awk -F "|" '{print $1}')
+      HOST=$(cat "${SERVERS_LIST}" | grep -v ^# | grep ${FILTER} | awk -F";" '{print $5}' | uniq)
       echo "Selecione o servidor no qual você deseja se conectar: "
       selectedHost=$(zenity --list --title="Servidor" --width=400 --height=600 --column="Seleção" $HOST)
       if [ -z ${selectedHost} ];
         then
-          echo "Opção Inválida, Digite a opção correta ou Crtl + C para sair: "
+          zenity --info --text="Selected Server is null"
       else
-        SERVER_PORT=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedHost | awk -F";" '{print $4}')
-        SERVER_USER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedHost | awk -F";" '{print $3}')
-        SERVER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w $selectedHost | awk -F";" '{print $2}')
+        FILTER=$(echo $selectedHost | awk -F "|" '{print $1}')
+        SERVER_PORT=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w ${FILTER} | awk -F";" '{print $4}')
+        SERVER_USER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w ${FILTER} | awk -F";" '{print $3}')
+        SERVER=$(egrep  '^(.*;){3}[0-9]+;[^;]+$' "${SERVERS_LIST}" | grep -v ^# | grep -w ${FILTER} | awk -F";" '{print $2}')
         OPTION=$(zenity --list --title="Conservice" --width=400 --height=600 \
-          --column="Seleção" "Acesso Remoto" "Download/Upload")
+          --column="Seleção" "Acesso Remoto" "Download/Upload"| awk -F"|" '{print $1}')
         if [ "$OPTION" == "Acesso Remoto" ];
           then
             ssh -i $SSH_KEY -p"$SERVER_PORT" "$SERVER_USER"@"$SERVER"
         elif [ "$OPTION" == "Download/Upload" ];
           then
-            MODE=$(zenity --list --title="Opção" --column="Seleção" "Upload" "Download")
+            MODE=$(zenity --list --title="OPTIONS" --column="SELECTION" "Upload" "Download")
             if [ "$MODE" == "Upload" ];
               then
                 zenity --info --text="Selecione o arquivo para upload."
