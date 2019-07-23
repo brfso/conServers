@@ -21,11 +21,9 @@ This is script list all server from html page with table (<td>) and automatc coo
 ### MAC OSX Users
 For Mac users, follow the steps bellow:
 ```
-brew install xquartz
 brew install zenity
 brew install wget
 ```
-Every time you run conserver inside xquarz terminal
 
 **Notes:** Mac Users can install wget using this is how to: http://osxdaily.com/2012/05/22/install-wget-mac-os-x/
 
