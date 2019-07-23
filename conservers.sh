@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 . /etc/conservers.config
 
 set -o errexit
