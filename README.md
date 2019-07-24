@@ -1,8 +1,8 @@
 # conServers.sh
+Script used to list servers from `HTML` page.
 
-## Intro
-
-This is script list all server from html page with table (<td>) and automatc coonect  in selected server.
+## How it's works
+This is script list all server from html page with table (<td>) and automatc connect in selected server.
 
 ## Requirements
 
@@ -11,37 +11,20 @@ This is script list all server from html page with table (<td>) and automatc coo
 2. SSH RSA Key to connect on Server
 3. HTML Page with table (Company | Hostname or ip Address| user| port | alias )
 	
-## How to Instal
-	cd ~/
-	wget https://github.com/brfso/conServers/archive/master.zip
-	unzip conServers-master.zip
-	cd $PWD/conServers-master/
-	./install.sh
-
-### MAC OSX Users
-For Mac users, follow the steps bellow:
+## How to Install
+The `install.sh` should be used to install `conServers` and requirements. 
 ```
-brew install zenity
-brew install wget
-```
-
-**Notes:** Mac Users can install wget using this is how to: http://osxdaily.com/2012/05/22/install-wget-mac-os-x/
-
-### Linux Users
-
-**Notes:** If you have some problem installing nokogiri, please execute the following command:
-
-```
-sudo apt-get install libgmp-dev 
-sudo apt-get install ruby zenity ruby-dev
-sudo apt-get install zlib1g-dev
-sudo apt-get install bundler
+cd ~/
+wget https://github.com/brfso/conServers/archive/master.zip
+unzip conServers-master.zip
+cd $PWD/conServers-master/
+./install.sh
 ```
 	
 ## How to Use
 
 1. Set SSH Key in SSH_KEY in /etc/conservers.config
-2. Change Page to connect (url) in /etc/conservers.config
+2. Configure Page to connect (url) in /etc/conservers.config
 3. Execute conServers.sh
 
 `$ conservers.sh`
@@ -73,5 +56,4 @@ $ bash -x conserver.sh [option]
 ```
 
 ## toDO
-To view or report bug, request new features, use: https://github.com/brfso/conServers/issues
-
+To view,  report bug or request new features, use: https://github.com/brfso/conServers/issues
